@@ -18,10 +18,6 @@ button {
   box-sizing: border-box;
 }
 
-.calculator {
-  align-items: center;
-}
-
 .buttonsRow {
   display: flex;
   flex-direction: row;
