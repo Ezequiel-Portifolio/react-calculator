@@ -4,11 +4,11 @@
 
 Uma calculadora moderna e elegante desenvolvida com React, TypeScript e Vite.
 
-[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-[**🚀 Ver Demo**](https://seu-projeto.netlify.app) <!--
+[**🚀 Ver Demo**](https://calculator-in-react-by0-ez.netlify.app/) <!--
 
 </div>
 
@@ -49,7 +49,7 @@ Antes de começar, você precisa ter instalado em sua máquina:
 1. Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/calculator.git
+git clone https://github.com/Ezequiel-Portifolio/react-calculator.git
 ```
 
 2. Acesse a pasta do projeto:
