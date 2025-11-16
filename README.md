@@ -1,73 +1,159 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🧮 Calculadora React
 
-Currently, two official plugins are available:
+Uma calculadora moderna e elegante desenvolvida com React, TypeScript e Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-## React Compiler
+[**🚀 Ver Demo**](https://seu-projeto.netlify.app) <!--
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+✅ Operações matemáticas básicas (adição, subtração, multiplicação, divisão)  
+✅ Interface intuitiva e responsiva  
+✅ Design moderno e elegante  
+✅ Tratamento de erros  
+✅ Desenvolvida com TypeScript para maior segurança de tipos  
+✅ Performance otimizada com Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Tecnologias Utilizadas
+
+- **React 19.2.0** - Biblioteca JavaScript para construção de interfaces
+- **TypeScript 5.9.3** - Superset JavaScript com tipagem estática
+- **Vite 7.2.2** - Build tool moderna e rápida
+- **CSS3** - Estilização personalizada
+- **ESLint** - Linter para manter a qualidade do código
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+
+Antes de começar, você precisa ter instalado em sua máquina:
+
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+### Instalação
+
+1. Clone este repositório:
+
+```bash
+git clone https://github.com/seu-usuario/calculator.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Acesse a pasta do projeto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd calculator
 ```
+
+3. Instale as dependências:
+
+```bash
+npm install
+```
+
+### Executando
+
+Para rodar o projeto em modo de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O projeto estará disponível em `http://localhost:5173`
+
+### Build
+
+Para criar uma versão otimizada para produção:
+
+```bash
+npm run build
+```
+
+Para visualizar a versão de produção localmente:
+
+```bash
+npm run preview
+```
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+calculator/
+├── public/             # Arquivos estáticos
+├── src/
+│   ├── assets/        # Imagens e recursos
+│   ├── components/    # Componentes React
+│   │   ├── Calculator.tsx
+│   │   └── Calculator.css
+│   ├── App.tsx        # Componente principal
+│   ├── App.css
+│   ├── main.tsx       # Ponto de entrada
+│   └── index.css
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
+
+---
+
+## 🎨 Funcionalidades da Interface
+
+A calculadora possui uma interface clean e moderna com:
+
+- Display para visualização dos números e resultados
+- Botões numéricos (0-9)
+- Operadores matemáticos (+, -, \*, /)
+- Botão de limpar (C)
+- Botão de igual (=) para calcular o resultado
+- Design responsivo que se adapta a diferentes tamanhos de tela
+
+---
+
+## 🤝 Como Contribuir
+
+Contribuições são sempre bem-vindas! Se você tem alguma sugestão para melhorar este projeto:
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
+
+---
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido com ❤️ por **Ezequiel Alves**
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/seu-usuario)
+
+---
+
+<div align="center">
+
+⭐ Se este projeto te ajudou, deixe uma estrela! ⭐
+
+</div

@@ -4,12 +4,14 @@ import { useState } from "react";
 function Calculator() {
   // aqui é onde setamos o state
   const [valorNoDisplay, setValorNoDisplay] = useState("0");
+  const [JaCalculou, setJaCalculou] = useState(false);
 
   // função para mudar o valor ao clicar nos botões
   const mudarValorAoClicar = (buttonValue: string) => {
-    if (valorNoDisplay === "0") {
+    if (valorNoDisplay === "0" || JaCalculou === true) {
       setValorNoDisplay(buttonValue);
-    } else {
+      setJaCalculou(false);
+    } else if (JaCalculou === false) {
       setValorNoDisplay(valorNoDisplay + buttonValue);
     }
   };
@@ -17,6 +19,7 @@ function Calculator() {
   // função para limpar o display
   const limparValor = () => {
     setValorNoDisplay("0");
+    setJaCalculou(false);
   };
 
   // função para calcular o resultado
@@ -24,6 +27,7 @@ function Calculator() {
     try {
       const resultado = eval(valorNoDisplay);
       setValorNoDisplay(resultado.toString());
+      setJaCalculou(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setValorNoDisplay("Erro");
@@ -33,9 +37,8 @@ function Calculator() {
   return (
     // estrutura do componente
     <div className="calculator">
-      // display que mostra o valor atual
       <div className="display">{valorNoDisplay}</div>
-      /m
+
       <div className="buttonsColumn">
         <button onClick={() => mudarValorAoClicar("7")}>7</button>
         <button onClick={() => mudarValorAoClicar("8")}>8</button>
