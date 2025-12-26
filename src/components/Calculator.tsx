@@ -27,11 +27,18 @@ function Calculator() {
   const calcularResultado = () => {
     try {
       const resultado = evaluate(valorNoDisplay);
-      setValorNoDisplay(resultado.toString());
+
+      if (!isFinite(resultado)) {
+        setValorNoDisplay("Erro");
+      } else {
+        setValorNoDisplay(resultado.toString());
+      }
+
       setJaCalculou(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setValorNoDisplay("Erro");
+      setJaCalculou(true);
     }
   };
 
