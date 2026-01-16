@@ -1,6 +1,16 @@
 import "./Calculator.css";
-import { evaluate } from "mathjs";
+import { create, all } from "mathjs";
 import { useState } from "react";
+
+const math = create(all);
+math.import({
+  'import': () => { throw new Error('Function disabled') },
+  'createUnit': () => { throw new Error('Function disabled') },
+  'evaluate': () => { throw new Error('Function disabled') },
+  'parse': () => { throw new Error('Function disabled') },
+  'simplify': () => { throw new Error('Function disabled') },
+  'derivative': () => { throw new Error('Function disabled') },
+}, { override: true });
 
 function Calculator() {
   // aqui é onde setamos o state
@@ -44,19 +54,18 @@ function Calculator() {
   // função para calcular o resultado
   const calcularResultado = () => {
     try {
-      const resultado = evaluate(valorNoDisplay);
+      const safeInput = valorNoDisplay.replace(/[^0-9+\-*/().\s%]/g, '');
+      const resultado = math.evaluate(safeInput);
 
       if (!isFinite(resultado)) {
         setValorNoDisplay("Erro");
       } else {
-        // Salvar no histórico antes de atualizar o display
         setHistorico((prev) => [...prev, `${valorNoDisplay} = ${resultado}`]);
         setValorNoDisplay(resultado.toString());
       }
 
       setJaCalculou(true);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
+    } catch {
       setValorNoDisplay("Erro");
       setJaCalculou(true);
     }
