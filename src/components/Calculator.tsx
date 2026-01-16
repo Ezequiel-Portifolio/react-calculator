@@ -6,6 +6,8 @@ function Calculator() {
   // aqui é onde setamos o state
   const [valorNoDisplay, setValorNoDisplay] = useState("0");
   const [JaCalculou, setJaCalculou] = useState(false);
+  const [historico, setHistorico] = useState<string[]>([]);
+  const [mostrarHistorico, setMostrarHistorico] = useState(false);
 
   // função para mudar o valor ao clicar nos botões
   const mudarValorAoClicar = (buttonValue: string) => {
@@ -23,6 +25,22 @@ function Calculator() {
     setJaCalculou(false);
   };
 
+  // Toggle para mostrar/esconder histórico
+  const toggleHistorico = () => {
+    setMostrarHistorico(!mostrarHistorico);
+  };
+
+  // Limpar histórico
+  const limparHistorico = () => {
+    setHistorico([]);
+  };
+
+  // Usar valor do histórico no display
+  const usarDoHistorico = (resultado: string) => {
+    setValorNoDisplay(resultado);
+    setJaCalculou(true);
+  };
+
   // função para calcular o resultado
   const calcularResultado = () => {
     try {
@@ -31,6 +49,8 @@ function Calculator() {
       if (!isFinite(resultado)) {
         setValorNoDisplay("Erro");
       } else {
+        // Salvar no histórico antes de atualizar o display
+        setHistorico((prev) => [...prev, `${valorNoDisplay} = ${resultado}`]);
         setValorNoDisplay(resultado.toString());
       }
 
@@ -45,6 +65,38 @@ function Calculator() {
   return (
     // estrutura do componente
     <div className="calculator">
+      <button
+        className={`btn-toggle-historico ${mostrarHistorico ? "ativo" : ""}`}
+        onClick={toggleHistorico}
+      >
+        H
+      </button>
+
+      {mostrarHistorico && (
+        <div className="historico-container">
+          <div className="historico-header">
+            <span>Histórico</span>
+            <button onClick={limparHistorico}>Limpar</button>
+          </div>
+          {historico.length === 0 ? (
+            <p className="historico-vazio">Nenhum cálculo ainda</p>
+          ) : (
+            historico.map((item, index) => {
+              const resultado = item.split(" = ")[1];
+              return (
+                <div
+                  key={index}
+                  className="historico-item"
+                  onClick={() => usarDoHistorico(resultado)}
+                >
+                  {item}
+                </div>
+              );
+            })
+          )}
+        </div>
+      )}
+
       <div className="display">{valorNoDisplay}</div>
 
       <div className="buttonsRow">
