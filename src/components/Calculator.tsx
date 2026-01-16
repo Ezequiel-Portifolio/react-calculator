@@ -3,6 +3,9 @@ import { create, all } from "mathjs";
 import { useState } from "react";
 
 const math = create(all);
+
+const limitedEvaluate = math.evaluate;
+
 math.import({
   'import': () => { throw new Error('Function disabled') },
   'createUnit': () => { throw new Error('Function disabled') },
@@ -54,8 +57,7 @@ function Calculator() {
   // função para calcular o resultado
   const calcularResultado = () => {
     try {
-      const safeInput = valorNoDisplay.replace(/[^0-9+\-*/().\s%]/g, '');
-      const resultado = math.evaluate(safeInput);
+      const resultado = limitedEvaluate(valorNoDisplay);
 
       if (!isFinite(resultado)) {
         setValorNoDisplay("Erro");
