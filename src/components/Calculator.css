@@ -1,8 +1,63 @@
+/* Variáveis para modo escuro */
+.calculator.modo-escuro {
+  --bg-calculator: #1a1a2e;
+  --bg-display: #16213e;
+  --text-color: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.87);
+  --btn-bg: #1a1a1a;
+  --btn-hover-border: #646cff;
+  --display-border: #667eea;
+  --historico-bg: #16213e;
+  --historico-header-bg: #1a1a2e;
+  --historico-border: #333355;
+  --historico-item-color: #e0e0ff;
+  --historico-item-border: #333355;
+  --historico-item-hover-bg: rgba(102, 126, 234, 0.15);
+  --historico-vazio-color: #a0a0c0;
+  --toggle-btn-bg: #1a1a1a;
+  --toggle-btn-border: #333355;
+  --toggle-btn-hover-bg: #2a2a3e;
+}
+
+/* Variáveis para modo claro */
+.calculator.modo-claro {
+  --bg-calculator: #f5f5f5;
+  --bg-display: #ffffff;
+  --text-color: #1a1a2e;
+  --text-secondary: #213547;
+  --btn-bg: #ffffff;
+  --btn-hover-border: #764ba2;
+  --display-border: #ccccdd;
+  --historico-bg: #ffffff;
+  --historico-header-bg: #f0f0f5;
+  --historico-border: #ccccdd;
+  --historico-item-color: #333366;
+  --historico-item-border: #e0e0e8;
+  --historico-item-hover-bg: rgba(102, 126, 234, 0.1);
+  --historico-vazio-color: #666699;
+  --toggle-btn-bg: #ffffff;
+  --toggle-btn-border: #ccccdd;
+  --toggle-btn-hover-bg: #f0f0f5;
+}
+
 .calculator {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-calculator);
+  padding: 15px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 15px;
 }
 
 button {
@@ -12,6 +67,14 @@ button {
   border-radius: 50%;
   margin: auto 10px 10px auto;
   flex: 1;
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  border-color: var(--btn-hover-border);
 }
 
 .display {
@@ -21,9 +84,12 @@ button {
   text-align: right;
   margin: 20px auto;
   padding: 0 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--display-border);
   border-radius: 5px;
   box-sizing: border-box;
+  background-color: var(--bg-display);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 .buttonsRow {
@@ -33,45 +99,63 @@ button {
   flex: 1;
 }
 
+.btn-toggle-modo {
+  width: auto;
+  padding: 0 15px;
+  border-radius: 8px;
+  margin: 0;
+  background-color: var(--toggle-btn-bg);
+  color: var(--text-color);
+  font-weight: bold;
+  border: 1px solid var(--toggle-btn-border);
+  box-shadow: none;
+  transition: all 0.3s ease;
+  font-size: 1.2em;
+}
+
+.btn-toggle-modo:hover {
+  background-color: var(--toggle-btn-hover-bg);
+  border-color: var(--btn-hover-border);
+  transform: translateY(-2px);
+}
+
 .btn-toggle-historico {
   width: auto;
   padding: 0 15px;
   border-radius: 8px;
-  margin-bottom: 10px;
-  margin-left: auto;
-  margin-right: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  margin: 0;
+  background-color: var(--toggle-btn-bg);
+  color: var(--text-color);
   font-weight: bold;
-  border: none;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  border: 1px solid var(--toggle-btn-border);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .btn-toggle-historico:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
+  background-color: var(--toggle-btn-hover-bg);
+  border-color: var(--btn-hover-border);
   transform: translateY(-2px);
 }
 
 .btn-toggle-historico.ativo {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  box-shadow: 0 2px 8px rgba(245, 87, 108, 0.4);
+  background-color: var(--btn-hover-border);
+  color: #ffffff;
+  border-color: var(--btn-hover-border);
 }
 
 .btn-toggle-historico.ativo:hover {
-  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
-  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.6);
+  opacity: 0.9;
 }
 
 .historico-container {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 1px solid #667eea;
+  background-color: var(--historico-bg);
+  border: 1px solid var(--historico-border);
   border-radius: 8px;
   margin-bottom: 10px;
   max-height: 150px;
   overflow-y: auto;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
 }
 
 .historico-header {
@@ -79,10 +163,10 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 10px 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-bottom: 1px solid #764ba2;
+  background-color: var(--historico-header-bg);
+  border-bottom: 1px solid var(--historico-border);
   font-weight: bold;
-  color: #ffffff;
+  color: var(--text-color);
   font-size: 1em;
 }
 
@@ -93,37 +177,38 @@ button {
   font-size: 0.8em;
   margin: 0;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: var(--toggle-btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--toggle-btn-border);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .historico-header button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--toggle-btn-hover-bg);
+  border-color: var(--btn-hover-border);
 }
 
 .historico-vazio {
   padding: 15px;
   text-align: center;
-  color: #a0a0c0;
+  color: var(--historico-vazio-color);
   margin: 0;
   font-style: italic;
 }
 
 .historico-item {
   padding: 10px 12px;
-  border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+  border-bottom: 1px solid var(--historico-item-border);
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #e0e0ff;
+  color: var(--historico-item-color);
   font-size: 0.95em;
 }
 
 .historico-item:hover {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
-  color: #ffffff;
+  background-color: var(--historico-item-hover-bg);
+  color: var(--text-color);
 }
 
 .historico-item:last-child {

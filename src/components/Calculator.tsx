@@ -21,6 +21,12 @@ function Calculator() {
   const [JaCalculou, setJaCalculou] = useState(false);
   const [historico, setHistorico] = useState<string[]>([]);
   const [mostrarHistorico, setMostrarHistorico] = useState(false);
+  const [modoEscuro, setModoEscuro] = useState(true);
+
+  // função para alternar entre modo escuro e claro
+  const toggleModo = () => {
+    setModoEscuro(!modoEscuro);
+  };
 
   // função para mudar o valor ao clicar nos botões
   const mudarValorAoClicar = (buttonValue: string) => {
@@ -75,13 +81,22 @@ function Calculator() {
 
   return (
     // estrutura do componente
-    <div className="calculator">
-      <button
-        className={`btn-toggle-historico ${mostrarHistorico ? "ativo" : ""}`}
-        onClick={toggleHistorico}
-      >
-        H
-      </button>
+    <div className={`calculator ${modoEscuro ? "modo-escuro" : "modo-claro"}`}>
+      <div className="header-buttons">
+        <button
+          className="btn-toggle-modo"
+          onClick={toggleModo}
+          title={modoEscuro ? "Mudar para modo claro" : "Mudar para modo escuro"}
+        >
+          {modoEscuro ? "☀️" : "🌙"}
+        </button>
+        <button
+          className={`btn-toggle-historico ${mostrarHistorico ? "ativo" : ""}`}
+          onClick={toggleHistorico}
+        >
+          H
+        </button>
+      </div>
 
       {mostrarHistorico && (
         <div className="historico-container">
